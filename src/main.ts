@@ -1,22 +1,16 @@
-import 'phaser';
+import * as px from 'pixi.js';
 
-const gameConfig: Phaser.Types.Core.GameConfig = {
-    title: 'TypyPlane',
-    type: Phaser.AUTO,
-    scale: {
+export const init = (parent: HTMLElement) => {
+    let type = 'canvas';
+    if (px.utils.isWebGLSupported()) {
+        type = 'WebGL';
+    }
+    px.utils.sayHello(type);
+
+    const app = new px.Application({
         width: window.innerWidth,
         height: window.innerHeight,
-    },
+    });
 
-    physics: {
-        default: 'arcade',
-        arcade: {
-            debug: true,
-        },
-    },
-
-    parent: 'game',
-    backgroundColor: '#000000',
+    parent.appendChild(app.view);
 };
-
-export const initGame = () => new Phaser.Game(gameConfig);
