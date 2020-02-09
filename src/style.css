@@ -1,0 +1,9 @@
+p {
+    font-size: larger;
+}
+
+html, body, canvas {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
